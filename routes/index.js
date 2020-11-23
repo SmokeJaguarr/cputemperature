@@ -12,8 +12,10 @@ router.get('/', (req, res) => {
     })
   })
 
+// @desc Create API for fetching CPU temperature
+// @route GET /api/cputem
 router.get('/api/cputem', async (req, res) => {
-  const childPython = spawn(`${process.env.PYTHON}`, ['temperature.py']);
+  const childPython = spawn(process.env.PYTHON, ['temperature.py']);
   childPython.stdout.on('data', (data) => {
     res.send(data)
   })
