@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
   })
 
 router.get('/api/cputem', async (req, res) => {
-  const childPython = spawn(`${process.env.PYTHON, ['temperature.py']);
+  const childPython = spawn(`${process.env.PYTHON}`, ['temperature.py']);
   childPython.stdout.on('data', (data) => {
     res.send(data)
   })
