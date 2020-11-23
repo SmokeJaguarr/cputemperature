@@ -1,9 +1,8 @@
 const express = require('express')
 const router = express.Router()
 const { spawn } = require('child_process')
-
-//const si = require('systeminformation');
-
+const dotenv = require('dotenv')
+dotenv.config( { path: './config/config.env' })
 
 // @desc Index/Landing page
 // @route GET /
@@ -14,7 +13,7 @@ router.get('/', (req, res) => {
   })
 
 router.get('/api/cputem', async (req, res) => {
-  const childPython = spawn('python3', ['temperature.py']);
+  const childPython = spawn(`${process.env.PYTHON, ['temperature.py']);
   childPython.stdout.on('data', (data) => {
     res.send(data)
   })
